@@ -77,7 +77,7 @@ const PaginatedTable = () => {
         <button onClick={handlePrevious} >
           Previous
         </button>
-        <button> git add      {currentPage}</button>
+        <button> {currentPage}</button>
         <button onClick={handleNext}>
           Next
         </button>
