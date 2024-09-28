@@ -12,6 +12,7 @@ const PaginatedTable = () => {
   // Fetch data on component mount
   useEffect(() => {
     const fetchData = async () => {
+      try{
       const response = await fetch(
         "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
       );
@@ -19,6 +20,10 @@ const PaginatedTable = () => {
       setTotalPages(Math.ceil(result.length / itemsPerPage)); // calculate total pages
       setData(result); // Store the fetched data
       setLoading(false);
+    } catch(error){
+      console.error("failed to fetch data", error);
+      alert("failed to fetch data");
+    }
     };
 
     fetchData();
@@ -77,7 +82,7 @@ const PaginatedTable = () => {
         <button onClick={handlePrevious} >
           Previous
         </button>
-        <button> {currentPage}</button>
+        <button>{currentPage}</button>
         <button onClick={handleNext}>
           Next
         </button>
